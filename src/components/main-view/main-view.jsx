@@ -1,4 +1,7 @@
-export const MainView = () => {
+import { useState } from "react";
+
+const MainView = () => {
+    const [books, setBooks] = useState([]);
     return (
         <div>
             <div>Eloquent JavaScript</div>
@@ -8,4 +11,6 @@ export const MainView = () => {
             <div>The Road to React</div>
         </div>
     );
-}
+};
+
+export default MainView;
