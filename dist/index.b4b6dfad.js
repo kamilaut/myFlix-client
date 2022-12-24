@@ -27126,6 +27126,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _movieCard = require("../movie-card/movie-card");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
@@ -27151,22 +27152,20 @@ const MainView = ()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 13,
+        lineNumber: 14,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>{
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: movie.title
-            }, void 0, false, {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movieData: movie
+            }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 19,
-                columnNumber: 24
-            }, undefined);
-        })
+                lineNumber: 20,
+                columnNumber: 17
+            }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 17,
+        lineNumber: 18,
         columnNumber: 9
     }, undefined);
 };
@@ -27180,7 +27179,36 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"ga2u3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"jPE7s"}],"ga2u3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","@parcel/transformer-js/src/esmodule-helpers.js":"ga2u3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"jPE7s"}],"bwuIu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$67b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieCard = (props)=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: props.movieData.title
+    }, void 0, false, {
+        fileName: "src/components/movie-card/movie-card.jsx",
+        lineNumber: 2,
+        columnNumber: 12
+    }, undefined);
+};
+_c = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$67b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"ga2u3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"jPE7s"}],"ga2u3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
