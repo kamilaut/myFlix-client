@@ -4,8 +4,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     return (
         <div
             onClick={() => {
-                onMovieClick(movie),
-                    onMovieClick(movie.Description);
+                onMovieClick(movie);
             }}
         >
             {movie.Title}
@@ -18,8 +17,7 @@ MovieCard.propTypes = {
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
         ImagePath: PropTypes.string.isRequired,
-        _id: PropTypes.string.isRequired,
-        Director: PropTypes.string
+        _id: PropTypes.string.isRequired
     }).isRequired,
     onMovieClick: PropTypes.func.isRequired
 };
