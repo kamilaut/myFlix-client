@@ -28338,29 +28338,29 @@ const LoginView = ({ onLoggedIn  })=>{
     const handleSubmit = (event)=>{
         // this prevents the default behavior of the form which is to reload the entire page
         event.preventDefault();
-        const data1 = {
+        const data = {
             access: username,
             secret: password
         };
+        if (data.user) {
+            localStorage.setItem("user", JSON.stringify(data.user));
+            localStorage.setItem("token", data.token);
+            onLoggedIn(data.user, data.token);
+        } else alert("No such user");
         fetch("https://mirror-stage.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data1)
-        }).then((response)=>response.json()).then((data1)=>{
-            console.log("Login response: ", data1);
-            if (data1.user) onLoggedIn(data1.user, data1.token);
+            body: JSON.stringify(data)
+        }).then((response)=>response.json()).then((data)=>{
+            console.log("Login response: ", data);
+            if (data.user) onLoggedIn(data.user, data.token);
             else alert("No such user");
         }).catch((e)=>{
             alert("Something went wrong");
         });
     };
-    if (data.user) {
-        localStorage.setItem("user", JSON.stringify(data.user));
-        localStorage.setItem("token", data.token);
-        onLoggedIn(data.user, data.token);
-    } else alert("No such user");
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
         onSubmit: handleSubmit,
         children: [

@@ -13,6 +13,14 @@ export const LoginView = ({ onLoggedIn }) => {
             secret: password
         };
 
+        if (data.user) {
+            localStorage.setItem("user", JSON.stringify(data.user));
+            localStorage.setItem("token", data.token);
+            onLoggedIn(data.user, data.token);
+        } else {
+            alert("No such user");
+        }
+
         fetch("https://mirror-stage.herokuapp.com/login", {
             method: "POST",
             headers: {
@@ -33,14 +41,6 @@ export const LoginView = ({ onLoggedIn }) => {
                 alert("Something went wrong");
             });
     };
-
-    if (data.user) {
-        localStorage.setItem("user", JSON.stringify(data.user));
-        localStorage.setItem("token", data.token);
-        onLoggedIn(data.user, data.token);
-    } else {
-        alert("No such user");
-    }
 
     return (
         <form onSubmit={handleSubmit}>
