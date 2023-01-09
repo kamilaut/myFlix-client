@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { PropTypes } from "prop-types";
+
 
 export const SignupView = () => {
     const [username, setUsername] = useState("");
@@ -74,4 +76,7 @@ export const SignupView = () => {
             <button type="submit">Submit</button>
         </form>
     );
+};
+SignupView.PropTypes = {
+
 };

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { PropTypes } from "prop-types";
+
 
 export const LoginView = ({ onLoggedIn }) => {
     const [username, setUsername] = useState("");
@@ -9,17 +11,9 @@ export const LoginView = ({ onLoggedIn }) => {
         event.preventDefault();
 
         const data = {
-            access: username,
-            secret: password
+            Username: username,
+            Password: password
         };
-
-        if (data.user) {
-            localStorage.setItem("user", JSON.stringify(data.user));
-            localStorage.setItem("token", data.token);
-            onLoggedIn(data.user, data.token);
-        } else {
-            alert("No such user");
-        }
 
         fetch("https://mirror-stage.herokuapp.com/login", {
             method: "POST",
@@ -32,13 +26,12 @@ export const LoginView = ({ onLoggedIn }) => {
             .then((data) => {
                 console.log("Login response: ", data);
                 if (data.user) {
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                    localStorage.setItem("token", data.token);
                     onLoggedIn(data.user, data.token);
                 } else {
                     alert("No such user");
                 }
-            })
-            .catch((e) => {
-                alert("Something went wrong");
             });
     };
 
@@ -65,4 +58,8 @@ export const LoginView = ({ onLoggedIn }) => {
             <button type="submit">Submit</button>
         </form>
     );
+};
+
+LoginView.PropTypes = {
+    onLoggedIn: PropTypes.string.isRequired
 };
