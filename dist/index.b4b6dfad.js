@@ -27138,7 +27138,7 @@ const MainView = ()=>{
     const storedToken = localStorage.getItem("token");
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
-    const [user, setUser] = (0, _react.useState)(storedToken ? storedToken : null);
+    const [user, setUser] = (0, _react.useState)(storedUser ? storedToken : null);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         if (!token) return;
@@ -27222,7 +27222,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "BtKs/5P30xvp+9DjGDtc/RdHajs=");
+_s(MainView, "EJMhxlznfc43Zlmv8pni5rh3tfc=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

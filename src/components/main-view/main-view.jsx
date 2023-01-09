@@ -10,7 +10,7 @@ export const MainView = () => {
     const storedToken = localStorage.getItem("token");
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
-    const [user, setUser] = useState(storedToken ? storedToken : null);
+    const [user, setUser] = useState(storedUser ? storedToken : null);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
