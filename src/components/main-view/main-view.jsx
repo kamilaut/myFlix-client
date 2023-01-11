@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { PropTypes } from "prop-types";
+
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
@@ -10,7 +11,23 @@ export const MainView = () => {
     const storedToken = localStorage.getItem("token");
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
+
     const [user, setUser] = useState(storedUser ? storedUser : null);
+
+
+    useEffect(() => {
+        fetch("https://mirror-stage.herokuapp.com/movies")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                //data is the movies array you get from the movie_api
+                //storing it in the movies state using setMovies:
+                setMovies(data)
+            });
+    }, []);
+
+
+
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
@@ -67,4 +84,6 @@ export const MainView = () => {
             ))}
         </div>
     );
+
 };
+
