@@ -1,3 +1,7 @@
+import "./movie-view.scss";
+
+import { PropTypes } from "prop-types";
+
 export const MovieView = ({ movie, onBackClick }) => {
     console.log(movie)
     return (
@@ -23,7 +27,28 @@ export const MovieView = ({ movie, onBackClick }) => {
                 <span>{movie.Description}</span>
             </div>
 
-            <button onClick={onBackClick}>Back</button>
+            <button
+                onClick={onBackClick}
+                className="back-button"
+                style={{ cursor: "pointer" }}
+            >
+                Back
+            </button>
         </div>
     );
+};
+
+MovieView.propTypes = {
+    movie: PropTypes.shape({
+        Title: PropTypes.string.isRequired,
+        ImagePath: PropTypes.string.isRequired,
+        Director: PropTypes.shape({
+            Name: PropTypes.string.isRequired
+        }).isRequired,
+        Genre: PropTypes.shape({
+            Name: PropTypes.string.isRequired
+        }).isRequired,
+        Description: PropTypes.string.isRequired,
+    }).isRequired,
+    onBackClick: PropTypes.func.isRequired
 };
