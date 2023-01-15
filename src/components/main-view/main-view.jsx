@@ -4,11 +4,9 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from 'react-bootstrap/Container';
-import Button from "react-bootstrap/Button";
+import { Row, Col, Container, Button } from "react-bootstrap";
 
+import "./main-view.scss";
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -53,7 +51,7 @@ export const MainView = () => {
     if (!user) {
         return (
             <>
-                <Col md={10} style={{ border: "1px solid cyan" }}>
+                <Col md={10} >
                     <LoginView onLoggedIn={(user, token) => {
 
                         setUser(user);
@@ -79,7 +77,16 @@ export const MainView = () => {
 
     return (
         <Row className="justify-content-md-center">
-            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+            <button
+                className="btn-logout"
+                onClick={() => {
+                    setUser(null);
+                    setToken(null);
+                    localStorage.clear();
+                }}
+            >
+                Logout
+            </button>
             {movies.map((movie) => (
                 <MovieCard key={movie._id}
                     movie={movie}
