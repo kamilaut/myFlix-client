@@ -7,6 +7,8 @@ import { SignupView } from "../signup-view/signup-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from 'react-bootstrap/Container';
+import Button from "react-bootstrap/Button";
+
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -51,12 +53,16 @@ export const MainView = () => {
     if (!user) {
         return (
             <>
-                <LoginView onLoggedIn={(user, token) => {
-                    setUser(user);
-                    setToken(token);
-                }} />
-                or
-                <SignupView />
+                <Col md={10} style={{ border: "1px solid cyan" }}>
+                    <LoginView onLoggedIn={(user, token) => {
+
+                        setUser(user);
+                        setToken(token);
+
+                    }} />
+                    or
+                    <SignupView />
+                </Col>
             </>
         );
     }

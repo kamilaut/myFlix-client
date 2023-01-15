@@ -1,4 +1,5 @@
 import "./movie-view.scss";
+import Button from "react-bootstrap/Button";
 
 import { PropTypes } from "prop-types";
 
