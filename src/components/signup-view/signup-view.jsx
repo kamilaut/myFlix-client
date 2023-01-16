@@ -77,6 +77,5 @@ export const SignupView = () => {
         </form>
     );
 };
-SignupView.PropTypes = {
-
+SignupView.propTypes = {
 };
