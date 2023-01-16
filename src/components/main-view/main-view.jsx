@@ -52,6 +52,7 @@ export const MainView = () => {
         return (
             <>
                 <Col md={10} >
+
                     <LoginView onLoggedIn={(user, token) => {
 
                         setUser(user);
@@ -67,7 +68,14 @@ export const MainView = () => {
 
     if (selectedMovie) {
         return (
-            <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+            <Row className="justify-content-md-center">
+                <Col md={8}>
+                    <MovieView
+                        movie={selectedMovie}
+                        onBackClick={() => setSelectedMovie(null)}
+                    />
+                </Col>
+            </Row>
         );
     }
 
@@ -88,13 +96,19 @@ export const MainView = () => {
                 Logout
             </button>
             {movies.map((movie) => (
-                <MovieCard key={movie._id}
-                    movie={movie}
-                    onMovieClick={(newSelectedMovie) => {
-                        setSelectedMovie(newSelectedMovie);
-                        console.log(selectedMovie)
-                    }}
-                />
+                <Col md={3} >
+
+
+                    <MovieCard key={movie._id}
+                        movie={movie}
+                        onMovieClick={(newSelectedMovie) => {
+                            setSelectedMovie(newSelectedMovie);
+                            console.log(selectedMovie)
+
+                        }}
+
+                    />
+                </Col>
             ))}
         </Row>
     );
