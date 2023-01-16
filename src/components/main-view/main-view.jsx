@@ -14,28 +14,12 @@ export const MainView = () => {
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(storedUser ? storedUser : null);
-
-
-    useEffect(() => {
-        fetch("https://mirror-stage.herokuapp.com/movies")
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                //data is the movies array you get from the movie_api
-                //storing it in the movies state using setMovies:
-                setMovies(data)
-            });
-    }, []);
-
-
-
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
         if (!token) {
             return;
         }
-
         fetch("https://mirror-stage.herokuapp.com/movies", {
             headers: { Authorization: `Bearer ${token}` }
         })
@@ -52,7 +36,6 @@ export const MainView = () => {
         return (
             <>
                 <Col md={10} >
-
                     <LoginView onLoggedIn={(user, token) => {
 
                         setUser(user);
@@ -96,17 +79,13 @@ export const MainView = () => {
                 Logout
             </button>
             {movies.map((movie) => (
-                <Col md={3} >
-
-
+                <Col className="mb-3" key={movie._id} md={3}>
                     <MovieCard key={movie._id}
                         movie={movie}
                         onMovieClick={(newSelectedMovie) => {
                             setSelectedMovie(newSelectedMovie);
                             console.log(selectedMovie)
-
                         }}
-
                     />
                 </Col>
             ))}
