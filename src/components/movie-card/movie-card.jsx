@@ -6,7 +6,8 @@ import { Card } from 'react-bootstrap';
 
 export const MovieCard = ({ movie, onMovieClick }) => {
     return (
-        <Card style={{ width: '20rem' }}>
+        <Card className="h-100">
+
             <Card.Img variant="top" src={movie.ImagePath} />
             <Card.Body>
                 <Card.Title>{movie.Title}</Card.Title>
@@ -19,6 +20,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
                 </Button>
             </Card.Body>
         </Card>
+
     );
 };
 
