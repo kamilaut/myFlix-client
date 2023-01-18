@@ -36,7 +36,7 @@ export const SignupView = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
                 <Form.Control
@@ -77,11 +77,11 @@ export const SignupView = () => {
                     required
                 />
             </Form.Group>
-            <button type="submit"
-                className="back-button"
+            <Button className="btn-signup"
+                type="submit"
                 style={{ cursor: "pointer" }}
-            >Submit</button>
-        </form>
+            >Submit</Button>
+        </Form>
     );
 };
 SignupView.propTypes = {

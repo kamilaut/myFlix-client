@@ -68,7 +68,7 @@ export const MainView = () => {
 
     return (
         <Row className="justify-content-md-center">
-            <button
+            <Button
                 className="btn-logout"
                 onClick={() => {
                     setUser(null);
@@ -77,7 +77,7 @@ export const MainView = () => {
                 }}
             >
                 Logout
-            </button>
+            </Button>
             {movies.map((movie) => (
                 <Col className="mb-3" key={movie._id} md={3}>
                     <MovieCard key={movie._id}

@@ -7,36 +7,35 @@ import { PropTypes } from "prop-types";
 export const MovieView = ({ movie, onBackClick }) => {
     console.log(movie)
     return (
-        <Form className="mw-100">
-            <Col md={10} >
-                <div>
-                    <img src={movie.ImagePath} className="mw-100" />
-                </div>
-                <div>
-                    <span>Title: </span>
-                    <span>{movie.Title}</span>
-                </div>
-                <div>
-                    <span>Author: </span>
-                    <span>{movie.Director.Name}</span>
-                </div>
-                <div>
-                    <span>Year: </span>
-                    <span>{movie.Genre.Name}</span>
-                </div>
-                <div>
-                    <span>Description: </span>
-                    <span>{movie.Description}</span>
-                </div>
+        <Form>
+            <div>
+                <img src={movie.ImagePath} className="mw-100" />
+            </div>
+            <div>
+                <span>Title: </span>
+                <span>{movie.Title}</span>
+            </div>
+            <div>
+                <span>Author: </span>
+                <span>{movie.Director.Name}</span>
+            </div>
+            <div>
+                <span>Year: </span>
+                <span>{movie.Genre.Name}</span>
+            </div>
+            <div>
+                <span>Description: </span>
+                <span>{movie.Description}</span>
+            </div>
 
-                <button
-                    onClick={onBackClick}
-                    className="back-button"
-                    style={{ cursor: "pointer" }}
-                >
-                    Back
-                </button>
-            </Col>
+            <Button
+                onClick={onBackClick}
+                className="back-button"
+                style={{ cursor: "pointer" }}
+            >
+                Back
+            </Button>
+
         </Form>
     );
 };
