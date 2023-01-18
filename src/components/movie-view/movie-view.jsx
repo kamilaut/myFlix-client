@@ -1,14 +1,15 @@
 import "./movie-view.scss";
+import { Row, Col, Container, Button, Form } from "react-bootstrap";
+import React from 'react';
 
 import { PropTypes } from "prop-types";
 
 export const MovieView = ({ movie, onBackClick }) => {
     console.log(movie)
     return (
-
-        <div>
+        <Form>
             <div>
-                <img src={movie.ImagePath} />
+                <img src={movie.ImagePath} className="mw-100" />
             </div>
             <div>
                 <span>Title: </span>
@@ -27,14 +28,15 @@ export const MovieView = ({ movie, onBackClick }) => {
                 <span>{movie.Description}</span>
             </div>
 
-            <button
+            <Button
                 onClick={onBackClick}
                 className="back-button"
                 style={{ cursor: "pointer" }}
             >
                 Back
-            </button>
-        </div>
+            </Button>
+
+        </Form>
     );
 };
 
