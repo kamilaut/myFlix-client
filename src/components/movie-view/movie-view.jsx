@@ -1,11 +1,16 @@
 import "./movie-view.scss";
 import { Row, Col, Container, Button, Form } from "react-bootstrap";
 import React from 'react';
+import { useParams } from "react-router";
+// import { PropTypes } from "prop-types";
+import { Link } from 'react-router-dom';
 
-import { PropTypes } from "prop-types";
+export const MovieView = ({ movie }) => {
+    const { movieId } = useParams();
 
-export const MovieView = ({ movie, onBackClick }) => {
-    console.log(movie)
+    const movie = movie.find((b) => m._id === movieId);
+
+
     return (
         <Form>
             <div>
@@ -28,29 +33,29 @@ export const MovieView = ({ movie, onBackClick }) => {
                 <span>{movie.Description}</span>
             </div>
 
-            <Button
-                onClick={onBackClick}
-                className="back-button"
-                style={{ cursor: "pointer" }}
-            >
-                Back
-            </Button>
-
+            <Link to={'/'}>
+                <Button
+                    className="back-button"
+                    style={{ cursor: "pointer" }}
+                >
+                    Back
+                </Button>
+            </Link>
         </Form>
     );
 };
 
-MovieView.propTypes = {
-    movie: PropTypes.shape({
-        Title: PropTypes.string.isRequired,
-        ImagePath: PropTypes.string.isRequired,
-        Director: PropTypes.shape({
-            Name: PropTypes.string.isRequired
-        }).isRequired,
-        Genre: PropTypes.shape({
-            Name: PropTypes.string.isRequired
-        }).isRequired,
-        Description: PropTypes.string.isRequired,
-    }).isRequired,
-    onBackClick: PropTypes.func.isRequired
-};
+// MovieView.propTypes = {
+//     movie: PropTypes.shape({
+//         Title: PropTypes.string.isRequired,
+//         ImagePath: PropTypes.string.isRequired,
+//         Director: PropTypes.shape({
+//             Name: PropTypes.string.isRequired
+//         }).isRequired,
+//         Genre: PropTypes.shape({
+//             Name: PropTypes.string.isRequired
+//         }).isRequired,
+//         Description: PropTypes.string.isRequired,
+//     }).isRequired,
+//     onBackClick: PropTypes.func.isRequired
+// };
