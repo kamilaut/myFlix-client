@@ -1,42 +1,42 @@
 import "./movie-view.scss";
 import { Row, Col, Container, Button, Form } from "react-bootstrap";
 import React from 'react';
+import "./movie-view.scss";
+import { PropTypes } from "prop-types";
 import { useParams } from "react-router";
-// import { PropTypes } from "prop-types";
+import { Row, Col, Container, Button, Form } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-export const MovieView = ({ movie }) => {
+export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
 
-    const movie = movie.find((b) => m._id === movieId);
+    const requestedMovie = movies.find((movie) => movie._id === movieID);
 
 
     return (
         <Form>
             <div>
-                <img src={movie.ImagePath} className="mw-100" />
+                <img src={requestedMovie.ImagePath} className="mw-100" />
             </div>
             <div>
                 <span>Title: </span>
-                <span>{movie.Title}</span>
+                <span>{requestedMovie.Title}</span>
             </div>
             <div>
                 <span>Author: </span>
-                <span>{movie.Director.Name}</span>
+                <span>{requestedMovie.Director.Name}</span>
             </div>
             <div>
                 <span>Year: </span>
-                <span>{movie.Genre.Name}</span>
+                <span>{requestedMovie.Genre.Name}</span>
             </div>
             <div>
                 <span>Description: </span>
-                <span>{movie.Description}</span>
+                <span>{requestedMovie.Description}</span>
             </div>
 
-            <Link to={'/'}>
-                <Button
-                    className="back-button"
-                    style={{ cursor: "pointer" }}
+            <Link to="/">
+                <Button className="back-button" style={{ cursor: "pointer" }}
                 >
                     Back
                 </Button>
@@ -45,17 +45,6 @@ export const MovieView = ({ movie }) => {
     );
 };
 
-// MovieView.propTypes = {
-//     movie: PropTypes.shape({
-//         Title: PropTypes.string.isRequired,
-//         ImagePath: PropTypes.string.isRequired,
-//         Director: PropTypes.shape({
-//             Name: PropTypes.string.isRequired
-//         }).isRequired,
-//         Genre: PropTypes.shape({
-//             Name: PropTypes.string.isRequired
-//         }).isRequired,
-//         Description: PropTypes.string.isRequired,
-//     }).isRequired,
-//     onBackClick: PropTypes.func.isRequired
-// };
+MovieView.propTypes = {
+    movies: PropTypes.array.isRequired,
+};
