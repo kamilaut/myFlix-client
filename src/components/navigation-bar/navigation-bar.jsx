@@ -1,15 +1,17 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import React from "react";
+
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className="navbar" expand="lg">
             <Container>
-                <Navbar.Brand as={Link} to="/">
+                <Navbar.Brand className="nav-Title" as={Link} to="/">
                     Mirror Stage
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Collapse className="nav-text" id="basic-navbar-nav">
                     <Nav className="me-auto">
                         {!user && (
                             <>
@@ -26,7 +28,9 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                                 <Nav.Link as={Link} to="/">
                                     Home
                                 </Nav.Link>
-                                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                                <Nav.Link onClick={onLoggedOut}>
+                                    Logout
+                                </Nav.Link>
                             </>
                         )}
                     </Nav>
