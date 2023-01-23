@@ -1,14 +1,12 @@
-import "./movie-view.scss";
 import { Row, Col, Container, Button, Form } from "react-bootstrap";
 import React from 'react';
 import "./movie-view.scss";
 import { PropTypes } from "prop-types";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import { Row, Col, Container, Button, Form } from "react-bootstrap";
-import { Link } from 'react-router-dom';
 
 export const MovieView = ({ movies }) => {
-    const { movieId } = useParams();
+    const { movieID } = useParams();
 
     const requestedMovie = movies.find((movie) => movie._id === movieID);
 

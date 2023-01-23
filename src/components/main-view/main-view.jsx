@@ -59,8 +59,7 @@ export const MainView = () => {
                     />
                     <Route
                         path="/signup"
-                        element=
-                        {
+                        element={
                             <>
                                 {user ? (
                                     <Navigate to="/" />
@@ -77,14 +76,20 @@ export const MainView = () => {
                         element={
                             <>
                                 {!user ? (
-                                    <Navigate to="/login" replace />
+                                    <Navigate to="/login" />
                                 ) : movies.length === 0 ? (
-                                    <Col>The list is empty!</Col>
+                                    <></>
                                 ) : (
                                     <>
                                         {movies.map((movie) => (
                                             <Col className="mb-3" key={movie._id} md={3}>
-                                                <MovieCard key={movie._id}
+                                                <MovieCard
+                                                    key={movie._id}
+                                                    movie={movie}
+                                                    onMovieClick={(newSelectedMovie) => {
+                                                        setSelectedMovie(newSelectedMovie);
+                                                        console.log(selectedMovie);
+                                                    }}
                                                 />
                                             </Col>
                                         ))}
