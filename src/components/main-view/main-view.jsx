@@ -3,6 +3,7 @@ import { PropTypes } from "prop-types";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
+import { ProfileView } from "../profile-view/profile-view";
 import { SignupView } from "../signup-view/signup-view";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
@@ -120,8 +121,24 @@ export const MainView = () => {
                             </>
                         }
                     />
+                    <Route
+                        path="/profile"
+                        element={
+                            <>
+                                {!user ? (
+                                    <Navigate to="/login" replace />
+                                ) : user.length === 0 ? (
+                                    <Col> No such user </Col>
+                                ) : (
+                                    <Col>
+                                        <ProfileView user={user} movies={movies} />
+                                    </Col>
+                                )}
+                            </>
+                        }
+                    />
                 </Routes>
             </Row>
         </BrowserRouter>
     );
-}
+};
