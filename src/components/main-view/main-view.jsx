@@ -115,7 +115,7 @@ export const MainView = () => {
                                     <></>
                                 ) : (
                                     <Col md={8}>
-                                        <MovieView movies={movies} />
+                                        <MovieView movies={movies} user={user} token={token} setUser={setUser} />
                                     </Col>
                                 )}
                             </>
@@ -131,7 +131,7 @@ export const MainView = () => {
                                     <Col> No such user </Col>
                                 ) : (
                                     <Col>
-                                        <ProfileView user={user} movies={movies} />
+                                        <ProfileView user={user} movies={movies} token={token} setUser={setUser} />
                                     </Col>
                                 )}
                             </>

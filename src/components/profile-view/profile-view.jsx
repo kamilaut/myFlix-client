@@ -2,17 +2,10 @@ import React, { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ movies }) => {
-    const storedToken = localStorage.getItem("token");
-    const [token, setToken] = useState(storedToken ? storedToken : null);
-
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const [user, setUser] = useState(storedUser ? storedUser : null);
-
+export const ProfileView = ({ movies, user, token, setUser }) => {
     const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState();
     const [email, setEmail] = useState(user.Email);
-
 
     let favoriteMovies = movies && movies.filter(
         (m) =>
