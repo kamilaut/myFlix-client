@@ -34,6 +34,32 @@ export const MovieView = ({ movies, user, token, setUser }) => {
             });
     };
 
+    const removeFavorite = (movieID) => {
+        if (!token) return;
+
+        const url = `https://mirror-stage.herokuapp.com/users/${user.Username}/movies/${movieID}`;
+        const requestOptions = {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        fetch(url, requestOptions)
+            .then((response) => {
+                return response.json();
+            })
+            .then((updatedUser) => {
+                console.log(updatedUser);
+                alert("Removed from your list of favorites!");
+                localStorage.setItem("user", JSON.stringify(updatedUser));
+                setUser(updatedUser);
+            })
+            .catch((err) => {
+                alert("nope");
+            });
+    };
+
+
     return (
         <Form>
             <div>
@@ -61,6 +87,13 @@ export const MovieView = ({ movies, user, token, setUser }) => {
             >
                 Add to Favorites
             </Button>
+            <Button
+                className="fave-btn"
+                onClick={() => removeFavorite(movieID)}
+            >
+                Remove from Favorites
+            </Button>
+
 
             <Link to="/">
                 <Button className="back-button" style={{ cursor: "pointer" }}

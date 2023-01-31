@@ -12,18 +12,17 @@ export const ProfileView = ({ movies, user, token, setUser }) => {
             user.FavoriteMovies && user.FavoriteMovies.indexOf(m._id) >= 0
     );
 
-    const updateUser = (username) => {
+    async function updateUser(username) {
         fetch("https://mirror-stage.herokuapp.com/users/" + username, {
             headers: { Authorization: `Bearer ${token}` },
-        })
-            .then((response) => response.json())
-            .then((user) => {
-                if (user) {
-                    setUser(user);
-                    localStorage.setItem("user", JSON.stringify(user));
-                }
-            });
-    };
+        });
+        const response = await fetch("https://mirror-stage.herokuapp.com/users/");
+        const user = await response.json();
+        if (user) {
+            setUser(user);
+            localStorage.setItem("user", JSON.stringify(user));
+        }
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -132,6 +131,7 @@ export const ProfileView = ({ movies, user, token, setUser }) => {
                             <MovieCard movie={movie} />
                         </Col>
                     ))}
+
             </Row>
         </Row>
     );
