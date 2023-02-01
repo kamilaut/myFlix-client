@@ -4,7 +4,7 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ movie }) => {
     return (
         <Card className="h-100">
             <Card.Img variant="top" src={movie.ImagePath} />
@@ -25,6 +25,5 @@ MovieCard.propTypes = {
         Description: PropTypes.string.isRequired,
         ImagePath: PropTypes.string.isRequired,
         _id: PropTypes.string.isRequired
-    }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+    }).isRequired
 };

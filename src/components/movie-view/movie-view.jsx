@@ -81,18 +81,14 @@ export const MovieView = ({ movies, user, token, setUser }) => {
                 <span>Description: </span>
                 <span>{requestedMovie.Description}</span>
             </div>
-            <Button
-                className="fave-btn"
-                onClick={() => addFavorite(movieID)}
-            >
-                Add to Favorites
-            </Button>
-            <Button
-                className="fave-btn"
-                onClick={() => removeFavorite(movieID)}
-            >
-                Remove from Favorites
-            </Button>
+            {user.FavoriteMovies.includes(movieID) ? (
+                <Button className="fave-btn" onClick={() => removeFavorite(movieID)} >
+                    Remove from Favorites
+                </Button>) : (
+                <Button className="fave-btn" onClick={() => addFavorite(movieID)} >
+                    Add to Favorites
+                </Button>
+            )}
 
 
             <Link to="/">
@@ -108,4 +104,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
 
 MovieView.propTypes = {
     movies: PropTypes.array.isRequired,
+    user: PropTypes.object.isRequired,
+    token: PropTypes.string.isRequired,
+    setUser: PropTypes.func.isRequired
 };

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
+import { PropTypes } from "prop-types";
+
 
 export const ProfileView = ({ movies, user, token, setUser }) => {
     const [username, setUsername] = useState(user.Username);
@@ -11,18 +13,6 @@ export const ProfileView = ({ movies, user, token, setUser }) => {
         (m) =>
             user.FavoriteMovies && user.FavoriteMovies.indexOf(m._id) >= 0
     );
-
-    async function updateUser(username) {
-        fetch("https://mirror-stage.herokuapp.com/users/" + username, {
-            headers: { Authorization: `Bearer ${token}` },
-        });
-        const response = await fetch("https://mirror-stage.herokuapp.com/users/");
-        const user = await response.json();
-        if (user) {
-            setUser(user);
-            localStorage.setItem("user", JSON.stringify(user));
-        }
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -40,14 +30,18 @@ export const ProfileView = ({ movies, user, token, setUser }) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        }).then((response) => {
-            if (response.ok) {
-                alert("Changes saved");
-                updateUser(user.Username).then(() => window.location.reload());
-            } else {
-                alert("Something went wrong");
-            }
-        });
+        }).
+            then((response) => {
+                return response.json();
+            })
+            .then((updatedUser) => {
+                alert("POINT OF NO RETURN")
+                setUser(updatedUser);
+                localStorage.setItem("user", JSON.stringify(updatedUser));
+            })
+            .catch(error => {
+                alert("nope")
+            })
     };
 
     const handleDeregister = () => {
@@ -136,3 +130,10 @@ export const ProfileView = ({ movies, user, token, setUser }) => {
         </Row>
     );
 };
+
+ProfileView.PropTypes = {
+    movies: PropTypes.array.isRequired,
+    user: PropTypes.object.isRequired,
+    token: PropTypes.string.isRequired,
+    setUser: PropTypes.func.isRequired
+}

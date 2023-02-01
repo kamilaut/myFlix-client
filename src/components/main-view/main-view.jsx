@@ -59,7 +59,8 @@ export const MainView = () => {
                                             onLoggedIn={(user, token) => {
                                                 setUser(user);
                                                 setToken(token);
-                                                localStorage.clear();
+                                                localStorage.setItem("user", JSON.stringify(user));
+                                                localStorage.setItem("token", token);
                                             }}
                                         />
                                     </Col>
@@ -93,14 +94,7 @@ export const MainView = () => {
                                     <>
                                         {movies.map((movie) => (
                                             <Col className="mb-3" key={movie._id} md={3}>
-                                                <MovieCard
-                                                    key={movie._id}
-                                                    movie={movie}
-                                                    onMovieClick={(newSelectedMovie) => {
-                                                        setSelectedMovie(newSelectedMovie);
-                                                        console.log(selectedMovie);
-                                                    }}
-                                                />
+                                                <MovieCard key={movie._id} movie={movie} />
                                             </Col>
                                         ))}
                                     </>
