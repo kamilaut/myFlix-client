@@ -82,10 +82,10 @@ export const MovieView = ({ movies, user, token, setUser }) => {
                 <span>{requestedMovie.Description}</span>
             </div>
             {user.FavoriteMovies.includes(movieID) ? (
-                <Button className="fave-btn" onClick={() => removeFavorite(movieID)} >
+                <Button className="btn" onClick={() => removeFavorite(movieID)} >
                     Remove from Favorites
                 </Button>) : (
-                <Button className="fave-btn" onClick={() => addFavorite(movieID)} >
+                <Button className="btn" onClick={() => addFavorite(movieID)} >
                     Add to Favorites
                 </Button>
             )}
