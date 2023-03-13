@@ -13,8 +13,7 @@ a client-side built with React and Redux for an app called myFlix based on the s
 >package src/index.html
 
 ## Features 
-<p>
-● A single-page application (SPA)</p>
+<p>● A single-page application (SPA)</p>
 <p>● State routing for navigation between views and share URLs</p>
 <p>● Gives users the option to filter movies using a “search” feature</p>
 <p>●Parcel as its build tool</p>
