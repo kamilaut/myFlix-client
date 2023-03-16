@@ -10,7 +10,7 @@ application. Both client-side and server-side built with MERN (MongoDB, Express,
 [mirrorstage](https://mirror-stage.netlify.app/)
 
 ## installation 
->Clone or download [repository](https://github.com/kamilaut/movie_api)
+>Clone or download [repository](https://github.com/kamilaut/myFlix-client.git)
 >
 >run in PowerShell:
 >
