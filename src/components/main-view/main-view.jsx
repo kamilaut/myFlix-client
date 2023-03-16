@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { PropTypes } from "prop-types";
-import { MovieCard } from "../movie-card/movie-card";
+import { MoviesList } from "../movies-list/movies-list";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { ProfileView } from "../profile-view/profile-view";
@@ -8,6 +7,8 @@ import { SignupView } from "../signup-view/signup-view";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
 
 import "./main-view.scss";
 
@@ -15,9 +16,10 @@ export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [token, setToken] = useState(storedToken ? storedToken : null);
-    const [movies, setMovies] = useState([]);
+    const movies = useSelector((state) => state.movies.list);
     const [user, setUser] = useState(storedUser ? storedUser : null);
-    const [selectedMovie, setSelectedMovie] = useState(null);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!token) {
@@ -31,8 +33,10 @@ export const MainView = () => {
                 console.log(data);
                 //data is the movies array you get from the movie_api
                 //storing it in the movies state using setMovies:
-                setMovies(data)
+                const moviesFromApi = data
+                dispatch(setMovies(moviesFromApi));
             });
+
     }, [token]);
 
     return (
@@ -85,21 +89,7 @@ export const MainView = () => {
                     <Route
                         path="/"
                         element={
-                            <>
-                                {!user ? (
-                                    <Navigate to="/login" />
-                                ) : movies.length === 0 ? (
-                                    <></>
-                                ) : (
-                                    <>
-                                        {movies.map((movie) => (
-                                            <Col className="mb-3" key={movie._id} md={3}>
-                                                <MovieCard key={movie._id} movie={movie} />
-                                            </Col>
-                                        ))}
-                                    </>
-                                )}
-                            </>
+                            <>{!user ? <Navigate to="/login" replace /> : <MoviesList />}</>
                         }
                     />
                     <Route

@@ -1,6 +1,10 @@
+import React from "react";
 import { createRoot } from 'react-dom/client';
 import { MainView } from "./components/main-view/main-view";
 import Container from "react-bootstrap/Container";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
+
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // Import statement to indicate that you need to bundle `./index.scss`
@@ -8,9 +12,11 @@ import "./index.scss";
 
 const App = () => {
     return (
-        <Container>
-            <MainView />
-        </Container>
+        <Provider store={store}>
+            <Container>
+                <MainView />
+            </Container>
+        </Provider>
     );
 };
 // Finds the root of your app
