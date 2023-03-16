@@ -39,7 +39,7 @@ a client-side built with React and Redux for an app called myFlix based on the s
     "react-router-dom" 
     "react-scripts" 
     "redux" 
-  "devDependencies"
+
     "@parcel/transformer-sass" 
     "parcel" 
     "process" 
