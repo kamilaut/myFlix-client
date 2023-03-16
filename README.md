@@ -1,6 +1,6 @@
 # myFlix
 A client-side built with React and Redux for an app called myFlix based on the server-side [REST API and database](https://github.com/kamilaut/movie_api).
-The interface for using when making requests to—and receiving responses from—the [server-side](https://github.com/kamilaut/movie_api). The
+The interface for using to make requests to and receiving responses from the [server-side](https://github.com/kamilaut/movie_api). The
 client-side of this app includes several interface views (built using the React library) that handle data through the REST API endpoints
 application. Both client-side and server-side built with MERN (MongoDB, Express, React, and Node.js) stack.
 
