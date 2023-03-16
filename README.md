@@ -26,20 +26,22 @@ a client-side built with React and Redux for an app called myFlix based on the s
 
 
 ## Dependencies:
-    "@blueprintjs/core",
-    "@blueprintjs/table",
-    "@reduxjs/toolkit",
-    "bootstrap", 
-    "prop-types,
-    "react",
-    "react-bootstrap",
-    "react-dom",
-    "react-redux",
-    "react-router",
-    "react-router-dom",
-    "react-scripts",
-    "redux",
-    "@parcel/transformer-sass",
-    "process"
+    "@blueprintjs/core" 
+    "@blueprintjs/table" 
+    "@reduxjs/toolkit" 
+    "bootstrap" 
+    "prop-types" 
+    "react" 
+    "react-bootstrap" 
+    "react-dom" 
+    "react-redux" 
+    "react-router" 
+    "react-router-dom" 
+    "react-scripts" 
+    "redux" 
+  "devDependencies"
+    "@parcel/transformer-sass" 
+    "parcel" 
+    "process" 
     
     
