@@ -14,11 +14,13 @@ application. Both client-side and server-side built with MERN (MongoDB, Express,
 >
 >run in PowerShell:
 >
+>npm install --save-dev parcel
+>
 >cd myFlix-client 
 >
->npm install
+>parcel src/index.html
 >
->package src/index.html
+>open http://localhost:1234/ in your browser to see the HTML file 
 
 ## Features 
 <p>● A single-page application (SPA)</p>
