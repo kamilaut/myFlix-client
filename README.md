@@ -14,7 +14,7 @@ application. Both client-side and server-side built with MERN (MongoDB, Express,
 >
 >run in PowerShell:
 >
->npm install --save-dev parcel
+>npm install -g parcel
 >
 >cd myFlix-client 
 >
